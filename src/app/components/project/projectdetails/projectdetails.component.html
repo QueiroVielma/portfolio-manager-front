@@ -1,0 +1,112 @@
+    <div class="container">
+        <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Cadastro de Projetos</h5>
+        
+                    <form #formulario1="ngForm">
+                        <div class="row">
+                            <div class="col-6">
+                                <mdb-form-control>
+                                    <label mdbLabel class="form-label" for="nameProject">Nome do Projeto:</label>
+                                    <input 
+                                        [(ngModel)]="project.nameProject" 
+                                        mdbInput 
+                                        pattern=".*\S+.*" 
+                                        required 
+                                        type="text" 
+                                        name="nameProject" 
+                                        class="form-control" />
+                                </mdb-form-control>
+                            </div>
+            
+                            <div class="col-6">
+                                <mdb-form-control>
+                                    <label mdbLabel class="form-label" for="expectedEndDate">Data de Conclusão Esperada:</label>
+                                        <input 
+                                            [(ngModel)]="project.expectedEndDate" 
+                                            mdbInput 
+                                            required 
+                                            type="date" 
+                                            name="expectedEndDate" 
+                                            class="form-control" />
+                                </mdb-form-control>
+                            </div>
+            
+                            <div class="col-6">
+                                <mdb-form-control>
+                                    <label mdbLabel class="form-label" for="managerId">ID do Gerente:</label>
+                                        <select 
+                                            [(ngModel)]="project.responsibleManager" 
+                                            mdbInput 
+                                            name="managerId" 
+                                            class="form-select" 
+                                            required>
+                                            <option value="" disabled selected>Selecione o Gerente</option>
+                                            <option *ngFor="let user of users" [value]="user.id">
+                                                {{ user.nome }}
+                                            </option>
+                                        </select>
+                                </mdb-form-control>
+                            </div>
+            
+                            <div class="col-6">
+                                <mdb-form-control>
+                                    <label mdbLabel class="form-label" for="budget">Orçamento:</label>
+                                    <input 
+                                        [(ngModel)]="project.budget" 
+                                        mdbInput 
+                                        required 
+                                        type="number" 
+                                        step="0.01" 
+                                        name="budget" 
+                                        class="form-control" />
+                                </mdb-form-control>
+                            </div>
+            
+                            <div class="col-12">
+                                <mdb-form-control>
+                                    <label mdbLabel class="form-label" for="description">Descrição:</label>
+                                    <textarea 
+                                    [(ngModel)]="project.description" 
+                                    mdbInput 
+                                    required 
+                                    name="description" 
+                                    class="form-control"></textarea>
+                                </mdb-form-control>
+                            </div>
+            
+                            <div class="col-6">
+                                <mdb-form-control>
+                                    <label mdbLabel class="form-label" for="riskProject">Nível de Risco:</label>
+                                    <select 
+                                        [(ngModel)]="project.riskProject" 
+                                        mdbInput 
+                                        name="riskProject" 
+                                        class="form-select">
+                                        <option value="" disabled selected>Selecione o nível de risco</option>
+                                        <option value="0">Baixo</option>
+                                        <option value="1">Médio</option>
+                                        <option value="2">Alto</option>
+                                    </select>
+                                </mdb-form-control>
+                            </div>
+            
+                            <div class="col-12 text-center mt-4 d-flex justify-content-center gap-3">
+                                <button 
+                                    [disabled]="!formulario1.valid" 
+                                    (click)="save()" 
+                                    class="btn btn-primary">Salvar</button>
+                                <button 
+                                    type="reset" 
+                                    class="btn btn-secondary">Limpar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    
