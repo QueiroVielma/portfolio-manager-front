@@ -82,7 +82,7 @@ export class ProjectinfoComponent {
   // Obter nome do usuário pelo ID
   getUserNameById(userId: number): string {
     const user = this.allUsers.find(u => u.id === userId);
-    return user ? user.nome : 'Usuário não encontrado';
+    return user ? user.name : 'Usuário não encontrado';
   }
 
   isUserSelected(userId: number): boolean {

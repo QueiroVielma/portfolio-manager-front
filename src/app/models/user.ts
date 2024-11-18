@@ -1,7 +1,7 @@
 export class User {
 
     id!: number;
-    nome!: string;
+    name!: string;
     cpf!: string;
     dateBirth!: Date;
     positionUser!:number;

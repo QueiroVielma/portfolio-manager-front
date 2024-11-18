@@ -45,7 +45,7 @@
                                             required>
                                             <option value="" disabled selected>Selecione o Gerente</option>
                                             <option *ngFor="let user of users" [value]="user.id">
-                                                {{ user.nome }}
+                                                {{ user.name }}
                                             </option>
                                         </select>
                                 </mdb-form-control>

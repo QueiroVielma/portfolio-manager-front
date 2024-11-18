@@ -12,11 +12,12 @@ import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit
 import { ProjectdetailsComponent } from '../projectdetails/projectdetails.component';
 import { ProjectupdateComponent } from '../../projectupdate/projectupdate.component';
 import { ProjectinfoComponent } from '../../projectinfo/projectinfo.component';
+import { UserdetailsComponent } from '../../user/userdetails/userdetails.component';
 
 @Component({
   selector: 'app-projectlist',
   standalone: true,
-  imports: [CommonModule, FormsModule, ProjectdetailsComponent, MdbModalModule, ProjectupdateComponent, ProjectinfoComponent],
+  imports: [CommonModule, FormsModule, ProjectdetailsComponent, MdbModalModule, ProjectupdateComponent, ProjectinfoComponent, UserdetailsComponent],
   templateUrl: './projectlist.component.html',
   styleUrl: './projectlist.component.scss'
 })
@@ -33,6 +34,7 @@ export class ProjectlistComponent {
   @ViewChild('modalProjectsDetails') modalProjectsDetails!: TemplateRef<any>;
   @ViewChild('modalProjecteUpdate') modalProjecteUpdate!: TemplateRef<any>;
   @ViewChild('modalprojectinfo') modalprojectinfo!: TemplateRef<any>;
+  @ViewChild('modalUser') modalUser!: TemplateRef<any>;
   modalService = inject(MdbModalService);
   constructor() {
     this.findAll();
@@ -106,7 +108,10 @@ export class ProjectlistComponent {
     this.projectEdit = Object.assign({}, projeto); 
     this.modalRef = this.modalService.open(this.modalprojectinfo,  {modalClass: "modal-lg"});
   }
-
+  
+  user() { 
+    this.modalRef = this.modalService.open(this.modalUser,  {modalClass: "modal-lg"});
+  }
   retornoForm(mensagem: string) {
 
       this.modalRef.close(); 

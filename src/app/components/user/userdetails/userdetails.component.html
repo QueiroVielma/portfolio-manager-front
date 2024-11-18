@@ -1,1 +1,90 @@
-<p>userdetails works!</p>
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h5>Cadastro de Usuário</h5>
+  
+            <form #formulario2="ngForm">
+              <div class="row">
+                <div class="col-6">
+                  <mdb-form-control>
+                    <label mdbLabel class="form-label" for="nome">Nome do Usuário:</label>
+                    <input
+                      [(ngModel)]="user.name"
+                      mdbInput
+                      pattern=".*\S+.*"
+                      required
+                      type="text"
+                      name="nome"
+                      class="form-control"
+                    />
+                  </mdb-form-control>
+                </div>
+  
+                <div class="col-6">
+                  <mdb-form-control>
+                    <label mdbLabel class="form-label" for="cpf">CPF:</label>
+                    <input
+                      [(ngModel)]="user.cpf"
+                      mdbInput
+                      pattern="[0-9]{11}"
+                      required
+                      type="text"
+                      name="cpf"
+                      class="form-control"
+                    />
+                  </mdb-form-control>
+                </div>
+  
+                <div class="col-6">
+                  <mdb-form-control>
+                    <label mdbLabel class="form-label" for="dateBirth">Data de Nascimento:</label>
+                    <input
+                      [(ngModel)]="user.dateBirth"
+                      mdbInput
+                      required
+                      type="date"
+                      name="dateBirth"
+                      class="form-control"
+                    />
+                  </mdb-form-control>
+                </div>
+  
+                <div class="col-6">
+                  <mdb-form-control>
+                    <label mdbLabel class="form-label" for="positionUser">Cargo:</label>
+                    <select
+                      [(ngModel)]="user.positionUser"
+                      mdbInput
+                      name="positionUser"
+                      class="form-select"
+                      required
+                    >
+                      <option value="" disabled selected>Selecione o Cargo</option>
+                      <option value="1">Administrador</option>
+                      <option value="2">Gerente</option>
+                      <option value="3">Membro</option>
+                    </select>
+                  </mdb-form-control>
+                </div>
+  
+                <div class="col-12 text-center mt-4 d-flex justify-content-center gap-3">
+                  <button
+                    [disabled]="!formulario2.valid"
+                    (click)="createUser()"
+                    class="btn btn-primary"
+                  >
+                    Salvar
+                  </button>
+                  <button type="reset" class="btn btn-secondary">Limpar</button>
+                </div>
+              </div>
+            </form>
+
+            <app-userlist></app-userlist>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
