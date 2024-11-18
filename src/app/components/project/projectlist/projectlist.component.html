@@ -54,15 +54,9 @@
                   <td>{{ obterRiscoPorValorHtml(projeto.riskProject) }}</td>
   
                   <td class="alinharDireita">
-  
-                    <a
-                    class="btn-rounded btn btn-primary"
-                    (click)="editar(projeto)"
-                    >Editar</a
-                  >
-                    <a class="btn-rounded btn btn-danger" (click)="deleteById(projeto)"
-                      >Deletar</a
-                    >
+                    <a class="btn-rounded btn btn-primary me-2" (click)="info(projeto)">Detalhes</a>
+                    <a class="btn-rounded btn btn-primary me-2" (click)="editar(projeto)">Editar</a>
+                    <a class="btn-rounded btn btn-danger" (click)="deleteById(projeto)">Deletar</a>
                   </td>
                 </tr>
                 }
@@ -80,7 +74,7 @@
   
   
   
-  <ng-template #modalLivrosForm>
+  <ng-template #modalProjectsDetails>
   
     <div class="modal-header bg-primary text-white">
     
@@ -94,6 +88,45 @@
     <div class="modal-body">
       
       <app-projectdetails [project]="projectEdit" (retorno)="retornoForm($event)"></app-projectdetails>
+  
+    </div>
+    
+  
+  </ng-template>
+
+  <ng-template #modalProjecteUpdate>
+  
+    <div class="modal-header bg-primary text-white">
+    
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="modalRef.close()"
+      ></button>
+    </div>
+    <div class="modal-body">
+      
+      <app-projectupdate [project]="projectEdit" (retorno)="retornoForm($event)"></app-projectupdate>
+  
+    </div>
+    
+  
+  </ng-template>
+  <ng-template #modalprojectinfo>
+  
+    <div class="modal-header bg-primary text-white">
+    
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="modalRef.close()"
+      ></button>
+    </div>
+    <div class="modal-body">
+      
+      <app-projectinfo [project]="projectEdit" (retorno)="retornoForm($event)"></app-projectinfo>
   
     </div>
     

@@ -7,14 +7,16 @@ import { FormsModule } from '@angular/forms';
 import { Status } from '../../../enums/Status';
 import { obterStatusPorValor } from '../../../enums/Status';
 import { StatusDescricao } from '../../../enums/Status';
-import { obterRiscoPorValor, Risco } from '../../../enums/risco';
+import { obterRiscoPorValor, Risco } from '../../../enums/Risco';
 import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ProjectdetailsComponent } from '../projectdetails/projectdetails.component';
+import { ProjectupdateComponent } from '../../projectupdate/projectupdate.component';
+import { ProjectinfoComponent } from '../../projectinfo/projectinfo.component';
 
 @Component({
   selector: 'app-projectlist',
   standalone: true,
-  imports: [CommonModule, FormsModule, ProjectdetailsComponent, MdbModalModule],
+  imports: [CommonModule, FormsModule, ProjectdetailsComponent, MdbModalModule, ProjectupdateComponent, ProjectinfoComponent],
   templateUrl: './projectlist.component.html',
   styleUrl: './projectlist.component.scss'
 })
@@ -28,7 +30,9 @@ export class ProjectlistComponent {
   projectService = inject(ProjectService);
 
   modalRef!: MdbModalRef<any>;
-  @ViewChild('modalLivrosForm') modalLivrosForm!: TemplateRef<any>;
+  @ViewChild('modalProjectsDetails') modalProjectsDetails!: TemplateRef<any>;
+  @ViewChild('modalProjecteUpdate') modalProjecteUpdate!: TemplateRef<any>;
+  @ViewChild('modalprojectinfo') modalprojectinfo!: TemplateRef<any>;
   modalService = inject(MdbModalService);
   constructor() {
     this.findAll();
@@ -90,12 +94,17 @@ export class ProjectlistComponent {
 
   novo() {
     this.projectEdit = new Project();
-    this.modalRef = this.modalService.open(this.modalLivrosForm, {modalClass: "modal-lg"});
+    this.modalRef = this.modalService.open(this.modalProjectsDetails, {modalClass: "modal-lg"});
   }
 
-  editar(livro: Project) {
-    this.projectEdit = Object.assign({}, livro); 
-    this.modalRef = this.modalService.open(this.modalLivrosForm,  {modalClass: "modal-lg"});
+  editar(projeto: Project) {
+    this.projectEdit = Object.assign({}, projeto); 
+    this.modalRef = this.modalService.open(this.modalProjecteUpdate,  {modalClass: "modal-lg"});
+  }
+
+  info(projeto: Project) {
+    this.projectEdit = Object.assign({}, projeto); 
+    this.modalRef = this.modalService.open(this.modalprojectinfo,  {modalClass: "modal-lg"});
   }
 
   retornoForm(mensagem: string) {

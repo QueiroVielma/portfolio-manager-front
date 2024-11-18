@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 import { User } from '../../../models/user';
 import { UserService } from '../../../services/user.service';
 import { CommonModule } from '@angular/common';
-import { obterRiscoPorValor } from '../../../enums/risco';
+import { obterRiscoPorValor } from '../../../enums/Risco';
 
 @Component({
   selector: 'app-projectdetails',
@@ -71,15 +71,6 @@ export class ProjectdetailsComponent {
     });
   }
 
-  save(): void {
-    this.project.responsibleManager = parseInt(this.project.responsibleManager.toString(), 10);
-    if (this.project.id) {
-      this.update();
-    } else {
-      this.create();
-    }
-  }
-
   create(): void {
     this.projectService.save(this.project).subscribe({
       next: (message) => {
@@ -89,19 +80,6 @@ export class ProjectdetailsComponent {
       },
       error: () => {
         Swal.fire('Erro', 'Falha ao salvar o projeto.', 'error');
-      }
-    });
-  }
-
-  update(): void {
-    this.projectService.update(this.project).subscribe({
-      next: (message) => {
-        Swal.fire('Sucesso', message, 'success');
-        this.retorno.emit(message);
-        this.router.navigate(['/projects']);
-      },
-      error: () => {
-        Swal.fire('Erro', 'Falha ao atualizar o projeto.', 'error');
       }
     });
   }

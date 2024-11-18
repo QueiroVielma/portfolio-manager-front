@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <div class="row">
+            <div class="col-6">
+              <h5 class="card-title">Detalhes do Projeto</h5>
+            </div>
+            <div class="col-3">
+              <button type="button" class="btn btn-success" (click)="proseguir(true)">Prosseguir Projeto</button>
+            </div>
+            <div class="col-3">
+              <button type="button" class="btn btn-danger" (click)="proseguir(false)">Cancelar Projeto</button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Informações do Projeto</h5>
+              <p><strong>Nome do Projeto:</strong> {{ project.nameProject }}</p>
+              <p><strong>Data de Início:</strong> {{ project.startDate | date }}</p>
+              <p><strong>Data de Conclusão Esperada:</strong> {{ project.expectedEndDate | date }}</p>
+              <p><strong>Data de Conclusão Real:</strong> {{ project.actualEndDate | date }}</p>
+              <p><strong>Orçamento:</strong> R$ {{ project.budget | number:'1.2-2' }}</p>
+              <p><strong>Descrição:</strong> {{ project.description }}</p>
+              <p><strong>Status:</strong> {{ obterStatusPorValorHtml(project.status) }}</p>
+              <p><strong>Nível de Risco:</strong> {{ obterRiscoPorValorHtml(project.riskProject) }}</p>
+            </div>
+          </div>
+
+          <!-- Card para Seleção de Usuários -->
+          <div *ngFor="let user of allUsers">
+            <div class="form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                [checked]="isUserSelected(user.id)"
+                (change)="toggleUserSelection(user, $event)">
+              <label class="form-check-label">{{ user.nome }}</label>
+            </div>
+          </div>
+          
+        </div>
+
+        <!-- Botões para Ação -->
+        <div class="card-footer">
+          <button type="button" class="btn btn-primary" (click)="salvarUsuarios()">Salvar Usuários</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

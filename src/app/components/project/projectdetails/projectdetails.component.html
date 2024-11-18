@@ -86,9 +86,9 @@
                                         name="riskProject" 
                                         class="form-select">
                                         <option value="" disabled selected>Selecione o nível de risco</option>
-                                        <option value="0">Baixo</option>
-                                        <option value="1">Médio</option>
-                                        <option value="2">Alto</option>
+                                        <option value="1">Baixo</option>
+                                        <option value="2">Médio</option>
+                                        <option value="3">Alto</option>
                                     </select>
                                 </mdb-form-control>
                             </div>
@@ -96,7 +96,7 @@
                             <div class="col-12 text-center mt-4 d-flex justify-content-center gap-3">
                                 <button 
                                     [disabled]="!formulario1.valid" 
-                                    (click)="save()" 
+                                    (click)="create()" 
                                     class="btn btn-primary">Salvar</button>
                                 <button 
                                     type="reset" 
